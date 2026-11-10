@@ -15,8 +15,9 @@ class TestCreditRepay:
                                 credit_repay_request_valid: CreditRepayRequest, db_session: Session):
         response = api_manager.user_steps.credit_repay_valid(credit_repay_request_valid, create_credit_user_request)
 
-        assert response.credit_id == credit_repay_request_valid.credit_id
-        assert response.amount_deposited == credit_repay_request_valid.amount
+        assert response.credit_id == credit_repay_request_valid.credit_id, 'Значения credit_id в запросе и ответе отличаются'
+        assert response.amount_deposited == credit_repay_request_valid.amount, ('Значение внесенной суммы к погашению'
+                                                                                'в ответе отличается от суммы в запросе')
 
         credit_from_db = Credit.get_credit_by_id(db_session, credit_repay_request_valid.credit_id)
         assert credit_from_db.balance == 0, "Кредит погашен, но сумма кредита не обнулилась, ошибка"
