@@ -1,0 +1,10 @@
+from typing import Annotated
+
+from src.main.api.geneartors.creation_rule import CreationRule
+from src.main.api.models.base_model import BaseModel
+
+
+class CreateCreditUserRequest(BaseModel):
+    username: Annotated[str, CreationRule(regex=r'^[A-Za-z0-9]{3,15}$')]
+    password: Annotated[str, CreationRule(r'^[A-Z]{3}[a-z]{1}[0-9]{2}[!$_]{4}$')]
+    role: Annotated[str, CreationRule(regex=r'^ROLE_CREDIT_SECRET')]

@@ -1,0 +1,16 @@
+# Установка:
+#   python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+# (или через uv: uv sync)
+
+# Runtime
+requests>=2.34
+pydantic>=2.14
+SQLAlchemy>=2.1
+psycopg2-binary>=2.9
+rstr>=3.2
+h11>=0.16
+
+# Dev / test
+pytest>=9.1
+allure-pytest>=2.16
+pytest-asyncio>=1.4
